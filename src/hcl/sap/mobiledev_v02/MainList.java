@@ -10,9 +10,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainList extends ActionBarActivity {
-	ListView listView;
+	private ListView listView;
+	private long lastPress;
+	private Toast alert;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,24 @@ public class MainList extends ActionBarActivity {
 				startActivity(intent);
 			}
 		});
+	}
+	
+	/*
+	 * to exit the application when back button pressed twice
+	 */
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+
+	    long currentTime = System.currentTimeMillis();
+	    if(currentTime - lastPress > 5000){
+	        alert = Toast.makeText(getBaseContext(), "Press again to exit", Toast.LENGTH_SHORT);
+	        alert.show();
+	        lastPress = currentTime;
+	    } else {
+	    	alert.cancel();
+	        super.onBackPressed();
+	    }
 	}
 
 	@Override
