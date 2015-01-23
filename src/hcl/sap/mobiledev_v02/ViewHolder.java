@@ -7,7 +7,7 @@ public class ViewHolder {
 	TextView text_lbl;
 	TextView text_name;
 	TextView tvBizPartnerName;
-	TextView tvBizPartnerID; 
+	TextView tvBizPartnerID;
 	ImageView icon;
 	 
 //    public ViewHolder(TextView text) {
