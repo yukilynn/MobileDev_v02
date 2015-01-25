@@ -36,6 +36,8 @@ public class BizPartList extends ActionBarActivity {
 	static final String KEY_SEMP = "sls_emp";
 	static final String KEY_RMRK = "remark";
 	
+//	private final static int BIZPART_DATA = 1;
+	
 	ListView list;
 	BinderData adapter = null;
 	List<HashMap<String,String>> bizPartCollection;
@@ -164,6 +166,7 @@ public class BizPartList extends ActionBarActivity {
 					i.putExtra("sls_emp", bizPartCollection.get(position).get(KEY_SEMP));
 					i.putExtra("remark", bizPartCollection.get(position).get(KEY_RMRK));
 					
+//					startActivityForResult(i, BIZPART_DATA);
 					startActivity(i);
 				}
 				
@@ -176,6 +179,18 @@ public class BizPartList extends ActionBarActivity {
 			Log.e("Error", "Loading exception");
 		}
 	}
+	
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		// TODO Auto-generated method stub
+//		if (requestCode == BIZPART_DATA) {
+//			if (resultCode == RESULT_OK) {
+//				Log.i("POSITIVE", "DATA OK");
+//			} else {
+//				Log.i("NEGATIVE", "DATA NOT OK");
+//			}
+//		}
+//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

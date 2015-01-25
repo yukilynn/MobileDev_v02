@@ -1,17 +1,21 @@
 package hcl.sap.mobiledev_v02;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class AddSalesOrd extends ActionBarActivity {
 	private ListView listView;
+	private final static int BIZPART_DATA = 1;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,12 +42,27 @@ public class AddSalesOrd extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				if (position == 1) {
 					Intent intent = new Intent(AddSalesOrd.this, BizPartList.class);
-					startActivity(intent);
+//					startActivity(intent);
+					startActivityForResult(intent, BIZPART_DATA);
 				} 
 			}
 		});
 	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if (requestCode == BIZPART_DATA) {
+			if (resultCode == RESULT_OK) {
+				System.out.println(data);
+				Log.i("POSITIVE", "DATA OK");
+			} else {
+				System.out.println(data);
+				Log.i("NEGATIVE", "DATA NOT OK");
+			}
+		}
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
