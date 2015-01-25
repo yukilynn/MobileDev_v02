@@ -1,14 +1,14 @@
 package hcl.sap.mobiledev_v02;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,29 +21,30 @@ public class MainList extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_list);
-		
+
 		listView = (ListView) findViewById(R.id.list);
-		
-		String[] values = new String[] {"Sales Order" };
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, values);
-		
-		listView.setAdapter(adapter);
-		
+
+		String[] values = new String[] { "Sales Order", "Sales Quotations",
+				"Service Contract" };
+
+		MainListAdapter mainAdapter = new MainListAdapter(this, values);
+		listView.setAdapter(mainAdapter);
+
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+
 				// TODO Auto-generated method stub
-//				int itemPosition = position;
-//				String itemValue = (String) listView.getItemAtPosition(position);
-				Intent intent = new Intent(MainList.this, SalesOrdList.class);
-				startActivity(intent);
+				if (position == 0) {
+					Intent intent = new Intent(MainList.this,
+							SalesOrdList.class);
+					startActivity(intent);
+				}
 			}
 		});
 	}
-	
+
 	/*
 	 * to exit the application when back button pressed twice
 	 */
@@ -51,33 +52,40 @@ public class MainList extends ActionBarActivity {
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 
-	    long currentTime = System.currentTimeMillis();
-	    if(currentTime - lastPress > 5000){
-	        alert = Toast.makeText(getBaseContext(), "Press again to exit", Toast.LENGTH_SHORT);
-	        alert.show();
-	        lastPress = currentTime;
-	    } else {
-	    	alert.cancel();
-	        super.onBackPressed();
-	    }
+		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastPress > 3000) {
+			alert = Toast.makeText(getBaseContext(), "Press again to exit",
+					Toast.LENGTH_SHORT);
+			alert.show();
+			lastPress = currentTime;
+		} else {
+			alert.cancel();
+			super.onBackPressed();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_list, menu);
+		// TODO Auto-generated method stub
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_list, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.action_preferences:
+			Toast.makeText(this, "Preferences selected", Toast.LENGTH_SHORT)
+					.show();
 			return true;
+		case R.id.action_help:
+			Toast.makeText(this, "Help selected", Toast.LENGTH_SHORT).show();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
+
 }
