@@ -61,7 +61,7 @@ public class BinderData extends BaseAdapter {
 			holder = new ViewHolder();
 			
 			holder.tvBizPartnerName = (TextView)vi.findViewById(R.id.tvBizPartnerName); // Business Partner Name
-			holder.tvBizPartnerID = (TextView)vi.findViewById(R.id.tvBizPartnerID); // Business Partner ID / Company ID
+			holder.tvBizPartnerID = (TextView)vi.findViewById(R.id.tvBizPartnerID);
 			
 			vi.setTag(holder);
 		} else {
