@@ -11,6 +11,11 @@ import android.widget.TextView;
 public class SalesOrdAdapter extends ArrayAdapter<String> {
 	private final Context context;
 	private final String[] values;
+	
+	public static final int TYPE_LIST = 0;
+	public static final int TYPE_NONE = 1;
+	
+//	public ListViewItem[] objects;
 
 	public SalesOrdAdapter(Context context, String[] values) {
 		super(context, R.layout.list_select, values);
@@ -24,13 +29,14 @@ public class SalesOrdAdapter extends ArrayAdapter<String> {
 		// TODO Auto-generated method stub
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View viewHolder = inflater.inflate(R.layout.list_select, parent, false);
-		TextView txt_lbl = (TextView) viewHolder.findViewById(R.id.tvTextLabel);
-		TextView txt_disp = (TextView) viewHolder.findViewById(R.id.tvTextDisp);
+		TextView bizPart_lbl = (TextView) viewHolder.findViewById(R.id.tvBizPartner);
+		TextView bizPart_name = (TextView) viewHolder.findViewById(R.id.tvBizPartnerName);
 		ImageView arrow = (ImageView) viewHolder.findViewById(R.id.ivArrow);
-		txt_lbl.setText(values[position]);
-		
-		if (position == 1 || position == 4 || position == 5 || position == 6 || position == 7
-				|| position == 8 || position == 9 || position == 10) {
+		bizPart_lbl.setText(values[position]);
+		String s = values[position];
+		if (s.startsWith("Business Partner") || s.startsWith("Sales Employee") || s.startsWith("Posting Date")
+				|| s.startsWith("Delivery Date") || s.startsWith("Document Date") || s.startsWith("Remarks")
+				|| s.startsWith("Ship To") || s.startsWith("Bill To")) {
 			arrow.setImageResource(R.drawable.arrow);
 		} else {
 			arrow.setImageResource(android.R.color.transparent);

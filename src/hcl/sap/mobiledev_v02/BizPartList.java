@@ -13,18 +13,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class BizPartList extends ActionBarActivity {
+public class BizPartList extends Activity {
 
 	static final String KEY_TAG = "companydata";
 	static final String KEY_ID = "id";
@@ -35,8 +34,6 @@ public class BizPartList extends ActionBarActivity {
 	static final String KEY_CURR = "currency";
 	static final String KEY_SEMP = "sls_emp";
 	static final String KEY_RMRK = "remark";
-	
-//	private final static int BIZPART_DATA = 1;
 	
 	ListView list;
 	BinderData adapter = null;
@@ -96,28 +93,28 @@ public class BizPartList extends ActionBarActivity {
 					//--business partner
 					map.put(KEY_COID, ((Node)textCompanyIDList.item(0)).getNodeValue().trim());
 					
-					//5.------
+					//4.------
 					NodeList contactNameList = firstBizPartElement.getElementsByTagName(KEY_CP);
 					Element firstContactElement = (Element)contactNameList.item(0);
 					NodeList textContactList = firstContactElement.getChildNodes();
 					//--contact person
 					map.put(KEY_CP, ((Node)textContactList.item(0)).getNodeValue().trim());
 					
-					//6.------
+					//5.------
 					NodeList currencyList = firstBizPartElement.getElementsByTagName(KEY_CURR);
 					Element firstCurrencyElement = (Element)currencyList.item(0);
 					NodeList textCurrencyList = firstCurrencyElement.getChildNodes();
 					//--currency
 					map.put(KEY_CURR, ((Node)textCurrencyList.item(0)).getNodeValue().trim());
 					
-					//7.------
+					//4.------
 					NodeList salesEmpList = firstBizPartElement.getElementsByTagName(KEY_SEMP);
 					Element firstSalesEmpElement = (Element)salesEmpList.item(0);
 					NodeList textSalesEmpList = firstSalesEmpElement.getChildNodes();
 					//--sales employee
 					map.put(KEY_SEMP, ((Node)textSalesEmpList.item(0)).getNodeValue().trim());
 					
-					//8.------
+					//5.------
 					NodeList remarkList = firstBizPartElement.getElementsByTagName(KEY_RMRK);
 					Element firstRemarkElement = (Element)remarkList.item(0);
 					NodeList textRemarkList = firstRemarkElement.getChildNodes();
@@ -166,7 +163,6 @@ public class BizPartList extends ActionBarActivity {
 					i.putExtra("sls_emp", bizPartCollection.get(position).get(KEY_SEMP));
 					i.putExtra("remark", bizPartCollection.get(position).get(KEY_RMRK));
 					
-//					startActivityForResult(i, BIZPART_DATA);
 					startActivity(i);
 				}
 				
@@ -179,24 +175,14 @@ public class BizPartList extends ActionBarActivity {
 			Log.e("Error", "Loading exception");
 		}
 	}
-	
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		// TODO Auto-generated method stub
-//		if (requestCode == BIZPART_DATA) {
-//			if (resultCode == RESULT_OK) {
-//				Log.i("POSITIVE", "DATA OK");
-//			} else {
-//				Log.i("NEGATIVE", "DATA NOT OK");
-//			}
-//		}
-//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_list, menu);
+		getMenuInflater().inflate(R.menu.main_list, menu);
 		return true;
 	}
+	
+	
+
 }

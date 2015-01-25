@@ -1,34 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/tiled_background" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff" >
+<!--         <LinearLayout -->
+<!--             android:id="@+id/thumbnail" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_alignParentLeft="true" -->
+<!--             android:layout_marginRight="5dip" -->
+<!--             android:padding="3dip" > -->
 
-        <!-- <LinearLayout -->
-        <!-- android:id="@+id/thumbnail" -->
-        <!-- android:layout_width="wrap_content" -->
-        <!-- android:layout_height="wrap_content" -->
-        <!-- android:layout_alignParentLeft="true" -->
-        <!-- android:layout_marginRight="5dip" -->
-        <!-- android:padding="3dip" > -->
+<!--             <ImageView -->
+<!--                 android:id="@+id/ivLogo" -->
+<!--                 android:layout_width="60dip" -->
+<!--                 android:layout_height="60dip" -->
+<!--                 android:layout_gravity="top" -->
+<!--                 android:contentDescription="@string/app_name" -->
+<!--                 android:src="@drawable/human" /> -->
+<!--         </LinearLayout> -->
 
-
-        <!-- <ImageView -->
-        <!-- android:id="@+id/ivLogo" -->
-        <!-- android:layout_width="60dip" -->
-        <!-- android:layout_height="60dip" -->
-        <!-- android:layout_gravity="top" -->
-        <!-- android:contentDescription="@string/app_name" -->
-        <!-- android:src="@drawable/human" /> -->
-        <!-- </LinearLayout> -->
-
-
-        <!-- Rightend Arrow -->
+<!--         Rightend Arrow -->
 
         <ImageView
             android:id="@+id/ivArrow"
@@ -39,34 +31,33 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/arrow" />
 
-        <!-- Text Label -->
+<!--         Business Partner Label -->
 
         <TextView
-            android:id="@+id/tvTextLabel"
+            android:id="@+id/tvBizPartner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignTop="@+id/ivArrow"
             android:layout_marginLeft="21dp"
-            android:paddingBottom="9dp"
-            android:paddingTop="5dp"
+            android:paddingTop="5dip"
+            android:paddingBottom="9dip"
             android:text="@string/strBizPartner"
             android:textColor="#040404"
-            android:textSize="15dp"
+            android:textSize="15dip"
             android:textStyle="bold"
             android:typeface="sans" />
-
-        <!-- Text Display -->
+<!--         Business Partner Name -->
 
         <TextView
-            android:id="@+id/tvTextDisp"
+            android:id="@+id/tvBizPartnerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/tvTextLabel"
-            android:layout_below="@+id/tvTextLabel"
-            android:paddingBottom="9dp"
+            android:layout_alignLeft="@+id/tvBizPartner"
+            android:layout_below="@+id/tvBizPartner"
+            android:text="@string/strName"
+            android:paddingBottom="9dip"
             android:textColor="#343434"
             android:textSize="20dip" />
-    </RelativeLayout>
 
 </RelativeLayout>
